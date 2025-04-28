@@ -21,8 +21,8 @@ import { useUserContext } from "@/context/AuthContext"
 
 const SigninForm = () => {
   const { toast } = useToast();
-  const navigate = useNavigate();
-  const {checkAuthUser, isLoading: isUserLoading} = useUserContext();
+  const navigate = useNavigate()
+  const {checkAuthUser, isLoading: isUserLoading} = useUserContext()
 
   const form = useForm<z.infer<typeof SignInFormSchema>>({
     resolver: zodResolver(SignInFormSchema),
@@ -33,6 +33,7 @@ const SigninForm = () => {
   })
 
   // queries
+
   const {mutateAsync: signInAccount, isPending: isSigningInUser } = 
   useSignInAccount()
 
@@ -80,7 +81,7 @@ const SigninForm = () => {
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mt-4">
 
-        <FormField
+<FormField
             control={form.control}
             name="email"
             render={({ field }) => (
@@ -117,7 +118,7 @@ const SigninForm = () => {
           <Button type="submit" className="bg-blue-500">
             {isUserLoading ? (
               <div className="flex items-center justify-center gap-2">
-                <Loader /> Loading...
+                <Loader /> Loading
               </div>
             ) : (
               "Sign In"
@@ -134,4 +135,4 @@ const SigninForm = () => {
   )
 }
 
-export default SigninForm;
+export default SigninForm

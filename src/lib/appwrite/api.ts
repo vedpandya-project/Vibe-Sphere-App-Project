@@ -71,6 +71,7 @@ export async function getAccount() {
         return currentAccount
     } catch (error) {
         console.log(error)
+        return null;
     }
 }
 
@@ -90,5 +91,16 @@ export async function getCurrentUser() {
     } catch (error) {
         console.log(error)
         return null
+    }
+}
+
+// Sign Out
+export async function signOutAccount() {
+    try {
+        const session = await account.deleteSession("current")
+
+        return session
+    } catch (error) {
+        console.log(error)
     }
 }
