@@ -92,7 +92,7 @@ const SignupForm = () => {
           Welcome to Vibesphere, Please provide your details
         </p>
 
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 mt-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mt-4">
           <FormField
             control={form.control}
             name="name"
@@ -173,7 +173,7 @@ const SignupForm = () => {
 
           <p className="text-slate-600 text-center mt-2">
             Already have an account?
-            <Link to={"/sign-in"} className="text-blue-500 font-semibold ml-1">Sign in</Link>
+            <Link to={"/sign-in"} className="text-blue-500 font-semibold ml-1">Sign In</Link>
           </p>
         </form>
       </div>
