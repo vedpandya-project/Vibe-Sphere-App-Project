@@ -13,3 +13,9 @@ export type User = {
     imageUrl: string,
     bio: string
 }
+
+export type NavLinkTypes = {
+    imgUrl: string,
+    route: string,
+    label: string
+}
