@@ -1,6 +1,7 @@
 import { NewPost, NewUser } from "@/types"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { createPost, createUserAccount, signInAccount, signOutAccount } from "../appwrite/api"
+import { QUERY_KEYS } from "./queryKeys"
 
 export const useCreateUserAccount = () => {
     return useMutation({
@@ -28,7 +29,7 @@ export const useCreatePost = () => {
         mutationFn: (post: NewPost) => createPost(post),
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ["getRecentPosts"],
+                queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
             })
         },
     })
