@@ -1,4 +1,4 @@
-import { NewUser } from "@/types";
+import { NewPost, NewUser } from "@/types";
 import { account, appwriteConfig, avatars, databases } from "./config";
 import { ID, Query } from "appwrite";
 
@@ -100,6 +100,17 @@ export async function signOutAccount() {
         const session = await account.deleteSession("current")
 
         return session
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// POST
+
+// 1. Create Post
+export async function createPost (post: NewPost) {
+    try {
+        // Upload file to appwrite storage
     } catch (error) {
         console.log(error)
     }

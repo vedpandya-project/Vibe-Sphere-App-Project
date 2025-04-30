@@ -14,22 +14,28 @@ import {
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
 import FileUploader from "../shared/FileUploader"
+import { Models } from "appwrite"
+import { PostFormSchema } from "@/lib/validation"
 
-const formSchema = z.object({
-    username: z.string().min(2).max(50)
-})
+type PostFormProps = {
+  post ?: Models.Document
+}
 
-const PostForm = ({ post }) => {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+const PostForm = ({ post }: PostFormProps) => {
+    const form = useForm<z.infer<typeof PostFormSchema>>({
+        resolver: zodResolver(PostFormSchema),
         defaultValues: {
-            username: "",
+            caption: post ? post?.caption : "",
+            file: [],
+            location: post ? post.location: "",
+            tags: post ? post.tags.join(",") : ""
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit(values: z.infer<typeof PostFormSchema>) {
         console.log(values)
     }
+    
   return <Form {...form}>
   <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-9 w-full max-w-5xl
   custom-scrollbar">
